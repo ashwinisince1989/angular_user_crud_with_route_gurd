@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 import { AuthGuard } from '../_guards';
 
+import { UsersModule } from '../dashboard/users/users.module'
+
 const appRoutes: Routes = [
  {
   path: '',
@@ -13,9 +15,9 @@ const appRoutes: Routes = [
   },
   {
       path: 'users',
-      loadChildren: '../users/users.module#UsersModule'
+      loadChildren:() => UsersModule
   }],
    canActivate: [AuthGuard]
  }];
 
-export const dashboardRouting = RouterModule.forRoot(appRoutes);
+export const dashboardRouting = RouterModule.forChild(appRoutes);
