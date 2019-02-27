@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
+
 import { AlertService, AuthenticationService } from '../_services';
 
 @Component({templateUrl: 'login.component.html'})
@@ -48,11 +49,13 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    // this.router.navigate([this.returnUrl]);
+                    this.router.navigate(['dashboard']);
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
+                    console.log(error)
                 });
     }
 }
