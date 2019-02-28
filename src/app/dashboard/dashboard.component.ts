@@ -19,15 +19,15 @@ export class DashboardComponent implements OnInit {
       this.loadAllUsers();
   }
 
-  deleteUser(id: number) {
-     // this.userService.delete(id).pipe(first()).subscribe(() => { 
-     //     this.loadAllUsers() 
-      //});
+  deleteUser(userEmail: String) {
+     this.userService.delete(userEmail).pipe().subscribe(() => { 
+         this.loadAllUsers() 
+      });
   }
 
   private loadAllUsers() {
-      //this.userService.getAll().pipe(first()).subscribe(users => { 
-      //   this.users = users; 
-      //});
+      this.userService.getAll().pipe().subscribe(users => { 
+         this.users = users; 
+      });
   }
 }

@@ -48,9 +48,11 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
-                data => {
+                user => {
+                    //console.log(user)
                     // this.router.navigate([this.returnUrl]);
-                    this.router.navigate(['dashboard']);
+                    this.router.navigate(['/dashboard']);
+                    this.loading = false;
                 },
                 error => {
                     this.alertService.error(error);

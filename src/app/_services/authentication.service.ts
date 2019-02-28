@@ -13,13 +13,12 @@ export class AuthenticationService {
   login(username: string, password: string) {
       return this.http.post<any>(`http://localhost:3000/user/login`, { email: username, password: password },httpOptions)
           .pipe(map(user => {
-              console.log(user);
-              // login successful if there's a jwt token in the response
+                 // login successful if there's a jwt token in the response
               if (user && user.token) {
                   // store user details and jwt token in local storage to keep user logged in between page refreshes
                   localStorage.setItem('currentUser', JSON.stringify(user));
+                  localStorage.setItem('token', user.token);
               }
-
               return user;
           }));
   }
